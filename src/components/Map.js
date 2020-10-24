@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
-import ReactMapGL, {Source, Layer} from 'react-map-gl';
+import ReactMapGL from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
+import HeatmapOverlay from '../../node_modules/react-map-gl-heatmap-overlay';
+import cities from '../../node_modules/example-cities'
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
-
-const geojson = {
-  type: 'FeatureCollection',
-  features: [{type: 'Feature', properties: {dbh: 0}, geometry: {type: 'Point', coordinates: [40.8069, -73.9619]}}]
-};
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -23,16 +20,11 @@ const Map = () => {
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={mapboxgl.accessToken}
-      mapStyle='mapbox://styles/dannyoh0316/ckgn3lw4x1t0u1amnxp3mu92e'
-      // mapStyle='mapbox://styles/mapbox/dark-v10'
-      onViewportChange={viewport => setViewport(viewport)}
+      // mapStyle='mapbox://styles/dannyoh0316/ckgn3lw4x1t0u1amnxp3mu92e'
+      mapStyle='mapbox://styles/mapbox/dark-v10'
+      onViewportChange={nextViewport => setViewport(nextViewport)}
     >
-      <Source id="my-data" type="geojson" data={geojson}>
-          <Layer
-            id="point"
-            type="heatmap"
-          />
-      </Source>
+      <HeatmapOverlay locations={cities} {...viewport} />
     </ReactMapGL>
   );
 };

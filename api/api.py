@@ -1,5 +1,4 @@
 from flask import Flask
-import request as req
 
 
 app = Flask(__name__)
@@ -20,7 +19,3 @@ def api():
         'title': 'Flask React Application', 
         'completed': False
     }
-
-
-
-    
