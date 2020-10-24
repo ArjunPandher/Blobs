@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ReactMapGL, {Layer, Source, Marker} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
+import processJSON from '../jsonprocesser'
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
@@ -16,6 +17,8 @@ const Map = ({apiData}) => {
   });
 
   const geojson = apiData;
+
+  processJSON(geojson);
 
   return (
     <ReactMapGL

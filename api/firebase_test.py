@@ -26,7 +26,8 @@ for state in states:
           {
             'type': 'Feature',
             'properties': {
-            'dbh': uid},
+            'dbh': uid,
+            'aqi': data['aqi']},
             'place': place,
             'state': state,
             'country': country,
@@ -34,4 +35,4 @@ for state in states:
           }
         )
 geojson = {'type': 'FeatureCollection', 'features': features}
-result = firebase.post('/divhacks2020/test_data', geojson)
+result = firebase.post('/', geojson)
