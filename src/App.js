@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import IntroModal from './components/IntroModal';
 import Map from './components/Map';
+import {firebase} from './utils/firebase.js';
 
 
 const App = () => {
@@ -12,14 +13,18 @@ const App = () => {
     }
   );
 
+  const fixData = json => ({
+    ...json,
+    features: Object.values(json.features)
+  });
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('/api');
-      if (!response.ok) throw response;
-      const json = await response.json();
-      setApiData(json);
+    const db = firebase.database().ref('-MKRjef9K-rZ_CdKPG0l');
+    const handleData = snap => {
+      if (snap.val()) setApiData(fixData(snap.val()));
     }
-    fetchData();
+    db.on('value', handleData, error => alert(error));
+    return () => { db.off('value', handleData); };
   }, []);
 
   return (

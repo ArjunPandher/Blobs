@@ -11,7 +11,13 @@ def api():
 
   for state in states:
     response = req.get("https://api.waqi.info/search/?token=491989f2467ee8ad41a1ed72d33635bf9669f1e6&keyword=" + state)
-    stateData = response.json()['data']
+    response = response.json()
+    if response["status"] != "ok":
+      return {
+      'type': 'FeatureCollection',
+      'features': []
+    }
+    stateData = response["data"]
     for data in stateData:
       if data["aqi"] != "-":
         uid = data["uid"]
