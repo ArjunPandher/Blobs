@@ -12,6 +12,8 @@ function App() {
     zoom: 15
   })
 
+  const [initialData, setInitialData] = useState([{}])
+
   useEffect(()=> {
     fetch('/api').then(
       response => response.json()

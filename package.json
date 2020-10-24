@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-flask-api": "cd api && venv/bin/flask  run"
+    "start-flask-api": "venv/bin/flask run"
   },
   "eslintConfig": {
     "extends": [
