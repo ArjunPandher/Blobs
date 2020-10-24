@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactMapGL from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 
@@ -10,6 +10,12 @@ function App() {
     width: '100vw',
     height: '100vh',
     zoom: 10
+  })
+
+  useEffect(()=> {
+    fetch('/api').then(
+      response => response.json()
+    ).then(data => console.log(data))
   })
 
   return (
