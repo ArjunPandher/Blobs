@@ -6,8 +6,8 @@ import Map from './components/Map';
 const App = () => {
   const [apiData, setApiData] = useState(
     {
-      "status": "ok",
-      "data": []
+      "type":"FeatureCollection",
+      "features":[]
     }
   );
 

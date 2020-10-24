@@ -13,7 +13,26 @@ const Map = ({apiData}) => {
     // zoom: 15
     zoom: 1
   });
-  const geojson = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"dbh":7},"geometry":{"type":"Point","coordinates":[-80.0468,40.43461]}},{"type":"Feature","properties":{"dbh":11},"geometry":{"type":"Point","coordinates":[-80.03639,40.44505]}},{"type":"Feature","properties":{"dbh":7},"geometry":{"type":"Point","coordinates":[-80.03393,40.43546]}},{"type":"Feature","properties":{"dbh":20},"geometry":{"type":"Point","coordinates":[-80.05113,40.43404]}},{"type":"Feature","properties":{"dbh":2},"geometry":{"type":"Point","coordinates":[-79.93404,40.47953]}},{"type":"Feature","properties":{"dbh":-1},"geometry":{"type":"Point","coordinates":[-79.88148,40.45954]}},{"type":"Feature","properties":{"dbh":10},"geometry":{"type":"Point","coordinates":[-79.9201,40.47591]}}]}
+  // const geojson = {
+  //   "type":"FeatureCollection",
+  //   "features":[
+  //     {"type":"Feature", "properties":{"dbh":7},
+  //       "geometry":{"type":"Point","coordinates":[-80.0468,40.43461]}},
+  //     {"type":"Feature","properties":{"dbh":11},
+  //       "geometry":{"type":"Point","coordinates":[-80.03639,40.44505]}},
+  //     {"type":"Feature","properties":{"dbh":7},
+  //       "geometry":{"type":"Point","coordinates":[-80.03393,40.43546]}},
+  //     {"type":"Feature","properties":{"dbh":20},
+  //       "geometry":{"type":"Point","coordinates":[-80.05113,40.43404]}},
+  //     {"type":"Feature","properties":{"dbh":2},
+  //       "geometry":{"type":"Point","coordinates":[-79.93404,40.47953]}},
+  //     {"type":"Feature","properties":{"dbh":-1},
+  //       "geometry":{"type":"Point","coordinates":[-79.88148,40.45954]}},
+  //     {"type":"Feature","properties":{"dbh":10},
+  //       "geometry":{"type":"Point","coordinates":[-79.9201,40.47591]}}
+  //   ]
+  // }
+  const geojson = apiData;
 
   return (
     <ReactMapGL
@@ -95,8 +114,8 @@ const Map = ({apiData}) => {
         (
           <Marker
             key={d.uid}
-            latitude={Number(d.station.geo[0])}
-            longitude={Number(d.station.geo[1])}
+            latitude={d.geo[0]}
+            longitude={d.geo[1]}
           >
             <img src='../marker.png' height='3%' width='3%' />
           </Marker>
