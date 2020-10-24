@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ReactMapGL, {Layer, Source, Marker} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
 const Map = ({apiData}) => {
@@ -11,27 +12,9 @@ const Map = ({apiData}) => {
     width: '100vw',
     height: '100vh',
     // zoom: 15
-    zoom: 1
+    zoom: 5
   });
-  // const geojson = {
-  //   "type":"FeatureCollection",
-  //   "features":[
-  //     {"type":"Feature", "properties":{"dbh":7},
-  //       "geometry":{"type":"Point","coordinates":[-80.0468,40.43461]}},
-  //     {"type":"Feature","properties":{"dbh":11},
-  //       "geometry":{"type":"Point","coordinates":[-80.03639,40.44505]}},
-  //     {"type":"Feature","properties":{"dbh":7},
-  //       "geometry":{"type":"Point","coordinates":[-80.03393,40.43546]}},
-  //     {"type":"Feature","properties":{"dbh":20},
-  //       "geometry":{"type":"Point","coordinates":[-80.05113,40.43404]}},
-  //     {"type":"Feature","properties":{"dbh":2},
-  //       "geometry":{"type":"Point","coordinates":[-79.93404,40.47953]}},
-  //     {"type":"Feature","properties":{"dbh":-1},
-  //       "geometry":{"type":"Point","coordinates":[-79.88148,40.45954]}},
-  //     {"type":"Feature","properties":{"dbh":10},
-  //       "geometry":{"type":"Point","coordinates":[-79.9201,40.47591]}}
-  //   ]
-  // }
+
   const geojson = apiData;
 
   return (
@@ -156,17 +139,17 @@ const Map = ({apiData}) => {
           }}
       />
     </Source>
-      {/* {apiData.data.map(d =>
+      {apiData.features.map(dataPoint =>
         (
           <Marker
-            key={d.uid}
-            latitude={d.geo[0]}
-            longitude={d.geo[1]}
+            key={dataPoint.uid}
+            latitude={dataPoint.geometry.coordinates[1]}
+            longitude={dataPoint.geometry.coordinates[0]}
           >
             <img src='../marker.png' height='3%' width='3%' />
           </Marker>
         )
-      )} */}
+      )}
     </ReactMapGL>
   );
 };
