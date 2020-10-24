@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import ReactMapGL from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
-import HeatmapOverlay from '../../node_modules/react-map-gl-heatmap-overlay';
-import cities from '../../node_modules/example-cities'
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
@@ -24,7 +22,6 @@ const Map = () => {
       mapStyle='mapbox://styles/mapbox/dark-v10'
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >
-      <HeatmapOverlay locations={cities} {...viewport} />
     </ReactMapGL>
   );
 };
