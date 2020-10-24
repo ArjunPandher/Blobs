@@ -4,10 +4,12 @@ import Map from './components/Map';
 
 
 const App = () => {
-  const [apiData, setApiData] = useState({
-    "status": "ok",
-    "data": []
-  });
+  const [apiData, setApiData] = useState(
+    {
+      "status": "ok",
+      "data": []
+    }
+  );
 
   useEffect(() => {
     const fetchData = async () => {
