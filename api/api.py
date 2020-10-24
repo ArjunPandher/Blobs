@@ -13,10 +13,10 @@ for state in states:
     response = req.get('https://api.waqi.info/search/?token=491989f2467ee8ad41a1ed72d33635bf9669f1e6&keyword=' + state)
     stateData = response.json()['data']
     for data in stateData:
-      if data['aqi'] != '-':
-        uid = data['uid']
-        station = data['station']
-        name, coordinates = station['name'].split(', '), station['geo']
+      if data["aqi"] != "-":
+        uid = data["uid"]
+        station = data["station"]
+        name, coordinates = station["name"].split(", "), station["geo"]
         place, state, country = name[0], None, None
         if len(name) > 2:
           state, country = name[1], name[2]
@@ -24,13 +24,13 @@ for state in states:
           country = name[1]
         features.append(
           {
-            'type': 'Feature',
-            'properties': {
-            'dbh': uid},
-            'place': place,
-            'state': state,
-            'country': country,
-            'geometry': {'type': 'Point', 'coordinates': [coordinates[1], coordinates[0]]}
+            "type": "Feature",
+            "properties": {
+            "dbh": uid},
+            "place": place,
+            "state": state,
+            "country": country,
+            "geometry": {"type": "Point", "coordinates": [coordinates[1], coordinates[0]]}
           }
         )
 geojson = {'type': 'FeatureCollection', 'features': features}

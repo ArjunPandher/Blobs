@@ -21,8 +21,8 @@ const Map = ({apiData}) => {
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={mapboxgl.accessToken}
-      // mapStyle='mapbox://styles/dannyoh0316/ckgn3lw4x1t0u1amnxp3mu92e'
-      mapStyle='mapbox://styles/mapbox/dark-v10'
+      mapStyle='mapbox://styles/dannyoh0316/ckgn3lw4x1t0u1amnxp3mu92e'
+      // mapStyle='mapbox://styles/mapbox/dark-v10'
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >
     <Source id='contours' type='geojson' data={geojson}>
@@ -76,9 +76,9 @@ const Map = ({apiData}) => {
             ['linear'],
             ['zoom'],
             0,
-            2,
-            9,
-            20
+            20,
+            20,
+            75
             ],
             // Transition from heatmap to circle layer by zoom level
             'heatmap-opacity': [
@@ -92,7 +92,7 @@ const Map = ({apiData}) => {
             ]
         }}
       />
-      <Layer
+      {/* <Layer
         id='points'
         type='circle'
         paint={ {
@@ -137,7 +137,7 @@ const Map = ({apiData}) => {
           1
           ]
           }}
-      />
+      /> */}
     </Source>
       {apiData.features.map(dataPoint =>
         (
