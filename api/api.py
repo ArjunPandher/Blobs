@@ -1,13 +1,13 @@
 from flask import Flask
 import requests as req
 import json
+import numpy as np
+from firebase import firebase
 
-app = Flask(__name__)
+firebase = firebase.FirebaseApplication("https://divhacks2020.firebaseio.com/", None)
 
-@app.route('/api', methods=['GET'])
-def api():
-  features = []
-  states = ["illinois"]
+features = []
+states = ['colorado', 'new+york', 'maine']
 
   for state in states:
     response = req.get("https://api.waqi.info/search/?token=491989f2467ee8ad41a1ed72d33635bf9669f1e6&keyword=" + state)
@@ -39,9 +39,5 @@ def api():
             "geometry": {"type": "Point", "coordinates": [coordinates[1], coordinates[0]]}
           }
         )
-
-  geojson = {"type": "FeatureCollection", "features": features}
-  print(geojson)
-  return geojson
-
-api()
+geojson = {'type': 'FeatureCollection', 'features': features}
+result = firebase.post('', geojson)
