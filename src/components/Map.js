@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import ReactMapGL, {Marker} from 'react-map-gl';
+import ReactMapGL, {Layer, Source, Marker} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
-
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
@@ -14,6 +13,7 @@ const Map = ({apiData}) => {
     // zoom: 15
     zoom: 1
   });
+  const geojson = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"dbh":7},"geometry":{"type":"Point","coordinates":[-80.0468,40.43461]}},{"type":"Feature","properties":{"dbh":11},"geometry":{"type":"Point","coordinates":[-80.03639,40.44505]}},{"type":"Feature","properties":{"dbh":7},"geometry":{"type":"Point","coordinates":[-80.03393,40.43546]}},{"type":"Feature","properties":{"dbh":20},"geometry":{"type":"Point","coordinates":[-80.05113,40.43404]}},{"type":"Feature","properties":{"dbh":2},"geometry":{"type":"Point","coordinates":[-79.93404,40.47953]}},{"type":"Feature","properties":{"dbh":-1},"geometry":{"type":"Point","coordinates":[-79.88148,40.45954]}},{"type":"Feature","properties":{"dbh":10},"geometry":{"type":"Point","coordinates":[-79.9201,40.47591]}}]}
 
   return (
     <ReactMapGL
@@ -23,7 +23,75 @@ const Map = ({apiData}) => {
       mapStyle='mapbox://styles/mapbox/dark-v10'
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >
-      {apiData.data.map(d =>
+    <Source id='contours' type='geojson' data={geojson}>
+    <Layer
+        id='contours'
+        type='heatmap'
+        paint={{
+          'heatmap-weight': [
+            'interpolate',
+            ['linear'],
+            ['get', 'mag'],
+            0,
+            0,
+            6,
+            1
+            ],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
+            'heatmap-intensity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            1,
+            5,
+            3
+            ],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
+            'heatmap-color': [
+            'interpolate',
+            ['linear'],
+            ['heatmap-density'],
+            0,
+            'rgba(33,102,172,0)',
+            0.2,
+            'rgb(103,169,207)',
+            0.4,
+            'rgb(209,229,240)',
+            0.6,
+            'rgb(253,219,199)',
+            0.8,
+            'rgb(239,138,98)',
+            1,
+            'rgb(178,24,43)'
+            ],
+            // Adjust the heatmap radius by zoom level
+            'heatmap-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            2,
+            9,
+            20
+            ],
+            // Transition from heatmap to circle layer by zoom level
+            'heatmap-opacity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            7,
+            1,
+            9,
+            0
+            ]
+        }}
+      />
+    </Source>
+      {/* {apiData.data.map(d =>
         (
           <Marker
             key={d.uid}
@@ -33,7 +101,7 @@ const Map = ({apiData}) => {
             <img src='../marker.png' height='3%' width='3%' />
           </Marker>
         )
-      )}
+      )} */}
     </ReactMapGL>
   );
 };

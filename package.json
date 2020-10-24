@@ -14,7 +14,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-map-gl": "^5.2.9",
-    "react-map-gl-heatmap-overlay": "^1.1.4",
     "react-scripts": "4.0.0",
     "react-simple-maps": "^2.1.2",
     "web-vitals": "^0.2.4"
@@ -43,6 +42,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "webpack": "^4.20.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.0"
   },
   "proxy": "http://127.0.0.1:5000"
 }
