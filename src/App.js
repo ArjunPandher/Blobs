@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
+import IntroModal from './components/IntroModal';
 import Map from './components/Map';
 
 
@@ -22,7 +23,10 @@ const App = () => {
   }, []);
 
   return (
-    <Map apiData={apiData} />
+    <>
+      <IntroModal />
+      <Map apiData={apiData} />
+    </>
   );
 };
 
