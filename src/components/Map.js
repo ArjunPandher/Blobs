@@ -16,9 +16,7 @@ const Map = ({apiData}) => {
     zoom: 5
   });
 
-  const geojson = apiData;
-
-  processJSON(geojson);
+  const geojson = processJSON(apiData);
 
   return (
     <ReactMapGL
@@ -28,7 +26,9 @@ const Map = ({apiData}) => {
       // mapStyle='mapbox://styles/mapbox/dark-v10'
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >
-    <Source id='contours' type='geojson' data={geojson}>
+
+    <Source id='contours' type='geojson' data={geojson}> 
+    {/* For bad aqi */}
     <Layer
         id='contours'
         type='heatmap'
@@ -91,7 +91,7 @@ const Map = ({apiData}) => {
             7,
             1,
             9,
-            0
+            .45
             ]
         }}
       />
