@@ -9,17 +9,17 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-map-gl": "^5.2.9",
+    "react-map-gl-heatmap-overlay": "^1.1.4",
     "react-scripts": "4.0.0",
     "react-simple-maps": "^2.1.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-flask-api": "cd api && venv/bin/flask run",
+    "start-flask-api": "cd api && venv/bin/flask  run",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://127.0.0.1:5000/api"
+  "proxy": "http://127.0.0.1:5000"
 }
