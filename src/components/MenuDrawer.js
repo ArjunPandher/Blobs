@@ -8,12 +8,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Select from 'react-select';
-import { ImportantDevices } from '@material-ui/icons';
 import CheckBoxGroup from "./CheckBox"
 
 const drawerWidth = 240;
@@ -121,13 +118,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MenuDrawer = ({apiData, aqiRating, setAqiRating}) => {
+const MenuDrawer = ({apiData, aqiRating, setAqiRating, setViewport}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [exampleCity, setExampleCity] = useState(null);
 
-  const scaryAnimals = {
-      // apiData.features.map(dataPoint => {label: 'place'})
-  }
+  const exampleCities = [
+    { label: "Atlanta", value: 1 },
+    { label: "Boulder", value: 2 },
+    { label: "Chicago", value: 3 },
+    { label: "Denver", value: 4 },
+    { label: "Queens", value: 5 },
+    { label: "Toronto", value: 6 },
+  ];
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -150,8 +153,10 @@ const MenuDrawer = ({apiData, aqiRating, setAqiRating}) => {
           <Typography variant="h6" noWrap className={classes.title} >
             Big blobs on map
           </Typography>
-          <Select className={classes.search} options={scaryAnimals}>
-          {/* <div className={classes.search}> */}
+          <Select
+            className={classes.search}
+            options={exampleCities}
+            onChange={() => setViewport({latitude: 41.9136, longitude: -87.7239, width: '100vw', height: '100vh', zoom: 13})}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -163,7 +168,6 @@ const MenuDrawer = ({apiData, aqiRating, setAqiRating}) => {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          {/* </div> */}
           </Select>
           <IconButton
             color="inherit"

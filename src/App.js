@@ -19,6 +19,14 @@ const App = () => {
     moderate: true,
     good: true,
   });
+  const [viewport, setViewport] = useState({
+    latitude: 40.8069488,
+    longitude: -73.9618974,
+    width: '100vw',
+    height: '100vh',
+    // zoom: 15
+    zoom: 5
+  });
 
   const fixData = json => ({
     ...json,
@@ -47,13 +55,11 @@ const App = () => {
     return () => { db.off('value', handleData); };
   }, []);
 
-
-  console.log(apiData);
   return (
     <>
-      <MenuDrawer apiData={apiData} />
-      <PopUpDialog/>
-      <Map apiData={apiData} popData={popData}/>
+      <MenuDrawer apiData={apiData} aqiRating={aqiRating} setAqiRating={setAqiRating} setViewport={setViewport} />
+      <PopUpDialog />
+      <Map apiData={apiData} popData={popData} aqiRating={aqiRating} viewport={viewport} setViewport={setViewport} />
     </>
   );
 };

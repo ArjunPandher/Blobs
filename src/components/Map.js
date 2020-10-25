@@ -7,15 +7,16 @@ import processPopulation from '../populationprocessor'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
-const Map = ({apiData, popData}) => {
-  const [viewport, setViewport] = useState({
-    latitude: 40.8069488,
-    longitude: -73.9618974,
-    width: '100vw',
-    height: '100vh',
-    // zoom: 15
-    zoom: 5
-  });
+const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
+  // const [viewport, setViewport] = useState({
+  //   latitude: 40.8069488,
+  //   longitude: -73.9618974,
+  //   width: '100vw',
+  //   height: '100vh',
+  //   // zoom: 15
+  //   zoom: 5
+  // });
+  // console.log(apiData)
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedApiData, setSelectedApiData] = useState(apiData);
   const geojson = processJSON(apiData);
@@ -39,7 +40,11 @@ const Map = ({apiData, popData}) => {
   //   setSelectedApiData({"type": "FeatureCollection", "features": ret});
   // };
 
+<<<<<<< HEAD
+  const popjson = processPopulation(popData);
+=======
   const popjson = processPopulation(popData)
+>>>>>>> 2299cb5cf6c7e875a275ff1e58efcb67fb3416f2
 
   return (
     <ReactMapGL
