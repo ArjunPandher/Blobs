@@ -14,6 +14,7 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Select from 'react-select';
 import { ImportantDevices } from '@material-ui/icons';
+import CheckBoxGroup from "./CheckBox"
 
 const drawerWidth = 240;
 
@@ -190,6 +191,7 @@ const MenuDrawer = () => {
           paper: classes.drawerPaper,
         }}
       >
+        <CheckBoxGroup/>
       </Drawer>
       </div>
   )

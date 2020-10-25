@@ -30,7 +30,7 @@ const App = () => {
   return (
     <>
       <MenuDrawer/>
-      <PopUpDialog/>
+      {/* <PopUpDialog/> */}
       <Map apiData={apiData} />
     </>
   );
