@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -50,11 +50,8 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 const PopUpDialog = () => {
-  const [open, setOpen] = React.useState(true);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const [open, setOpen] = useState(true);
+  
   const handleClose = () => {
     setOpen(false);
   };

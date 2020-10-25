@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme, fade } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,7 +10,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+import Select from 'react-select';
+import { ImportantDevices } from '@material-ui/icons';
 
 const drawerWidth = 240;
 
@@ -23,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    height: '60px'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -70,12 +74,61 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: 0,
   },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      // marginLeft: theme.spacing(1),
+      right: '40%',
+      width: '220px',
+    },
+    menu: {zIndex: 100}
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '17ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
 }));
+
+const scaryAnimals = [
+  { label: "Alligators", value: 1 },
+  { label: "Crocodiles", value: 2 },
+  { label: "Sharks", value: 3 },
+  { label: "Small crocodiles", value: 4 },
+  { label: "Smallest crocodiles", value: 5 },
+  { label: "Snakes", value: 6 },
+];
 
 const MenuDrawer = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -95,9 +148,24 @@ const MenuDrawer = () => {
         })}
       >
         <Toolbar>
-        <Typography variant="h6" noWrap className={classes.title} >
+          <Typography variant="h6" noWrap className={classes.title} >
             Big blobs on map
           </Typography>
+          <Select className={classes.search} options={scaryAnimals}>
+          {/* <div className={classes.search}> */}
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search a location"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          {/* </div> */}
+          </Select>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -107,7 +175,6 @@ const MenuDrawer = () => {
           >
             <MenuIcon />
           </IconButton>
-
         </Toolbar>
       </AppBar>
       <Drawer
@@ -120,32 +187,9 @@ const MenuDrawer = () => {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        {/* <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
-        {/* <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       </div>
   )
-          }
+}
 
 export default MenuDrawer;
