@@ -81,7 +81,7 @@ const PopUpDialog = () => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="primary">
             Enter
           </Button>
         </DialogActions>
