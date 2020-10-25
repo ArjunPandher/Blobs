@@ -13,6 +13,12 @@ const App = () => {
     }
   );
   const [popData, setPopData] = useState({});
+  const [aqiRating, setAqiRating] = useState({
+    unhealthy: true,
+    bad: true,
+    moderate: true,
+    good: true,
+  });
 
   const fixData = json => ({
     ...json,
@@ -41,16 +47,13 @@ const App = () => {
     return () => { db.off('value', handleData); };
   }, []);
 
+
+  console.log(apiData);
   return (
     <>
-      <MenuDrawer apiData={apiData} />
-<<<<<<< HEAD
+      <MenuDrawer apiData={apiData} aqiRating={aqiRating} setAqiRating={setAqiRating} />
       <PopUpDialog />
-      <Map apiData={apiData} />
-=======
-      {/* <PopUpDialog/> */}
-      <Map apiData={apiData} popData={popData}/>
->>>>>>> ae3198dae73439cbc7b40a1eddda9d8c951ec6bb
+      <Map apiData={apiData} popData={popData} aqiRating={aqiRating} />
     </>
   );
 };
