@@ -305,7 +305,7 @@ const Map = ({apiData}) => {
             latitude={dataPoint.geometry.coordinates[1]}
             longitude={dataPoint.geometry.coordinates[0]}
           >
-            <img src='../marker.png' height='3%' width='3%' />
+            <img src='../marker.png' alt='' height='3%' width='3%' />
           </Marker>
         )
       )}
