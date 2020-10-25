@@ -1,4 +1,3 @@
-from flask import Flask
 import requests as req
 import json
 import numpy as np
