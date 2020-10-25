@@ -7,7 +7,7 @@ import processPopulation from '../populationprocessor'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
-const Map = ({apiData, popData, aqiRating}) => {
+const Map = ({apiData, popData}) => {
   const [viewport, setViewport] = useState({
     latitude: 40.8069488,
     longitude: -73.9618974,
@@ -17,28 +17,8 @@ const Map = ({apiData, popData, aqiRating}) => {
     zoom: 5
   });
   const [selectedPlace, setSelectedPlace] = useState(null);
-  const [selectedApiData, setSelectedApiData] = useState(apiData);
-  console.log(selectedApiData)
 
-  const geojson = processJSON(selectedApiData);
-
-  const updateApiData = () => {
-    const ret = [];
-    const features = apiData.features;
-    if (aqiRating.good) {
-      ret.push(features.filter(feature => Number(feature.properties.aqi) <= 50));
-    }
-    if (aqiRating.moderate) {
-      ret.push(features.filter(feature => Number(feature.properties.aqi) <= 100));
-    }
-    if (aqiRating.bad) {
-      ret.push(features.filter(feature => Number(feature.properties.aqi) <= 150));
-    }
-    if (aqiRating.unhealthy) {
-      ret.push(features.filter(feature => Number(feature.properties.aqi) > 150));
-    }
-    setSelectedApiData({"type": "FeatureCollection", "features": ret});
-  };
+  const geojson = processJSON(apiData);
 
   const popjson = processPopulation(popData)
 
@@ -357,15 +337,15 @@ const Map = ({apiData, popData, aqiRating}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(255,255,237)',
+            'rgb(255,180,0)',
             0.4,
-            'rgb(255,255,197)',
+            'rgb(255,206,0)',
             0.6,
-            'rgb(255,255,158)',
+            'rgb(255,219,0)',
             0.8,
-            'rgb(255,255,139)',
+            'rgb(255,219,0)',
             1,
-            'rgb(255,255,119)'
+            'rgb(255,255,0)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -425,15 +405,15 @@ const Map = ({apiData, popData, aqiRating}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(255,255,237)',
+            'rgb(173,216,230)',
             0.4,
-            'rgb(255,255,197)',
+            'rgb(144,180,215)',
             0.6,
-            'rgb(255,255,119)',
+            'rgb(115,144,200)',
             0.8,
-            'rgb(255,255,79)',
+            'rgb(87,108,184)',
             1,
-            'rgb(255,255,0)'
+            'rgb(58,72,169)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -493,15 +473,15 @@ const Map = ({apiData, popData, aqiRating}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(255,255,237)',
+            'rgb(173,216,230)',
             0.4,
-            'rgb(255,255,119)',
+            'rgb(130,162,207)',
             0.6,
-            'rgb(255,255,0)',
+            'rgb(87,108,184)',
             0.8,
-            'rgb(255,202,0)',
+            'rgb(58,72,169)',
             1,
-            'rgb(255,187,0)'
+            'rgb(29,36,154)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -561,15 +541,15 @@ const Map = ({apiData, popData, aqiRating}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(255,255,237)',
+            'rgb(173,216,230)',
             0.4,
-            'rgb(255,255,0)',
+            'rgb(130,162,207)',
             0.6,
-            'rgb(255,187,0)',
+            'rgb(87,108,184)',
             0.8,
-            'rgb(255,150,0)',
+            'rgb(43,54,162)',
             1,
-            'rgb(255,110,0)'
+            'rgb(,0,139)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -621,8 +601,7 @@ const Map = ({apiData, popData, aqiRating}) => {
             <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
             <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
             <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-            <p>Air Quality Index: {selectedPlace.properties.aqi}</p>
-            {/* <p>Population: {popData.{selectedPlace.place}}</p> */}
+            {popData.selectedPlace.place ? ('hi') : null}
           </div>
         </Popup>
       ) : null}
