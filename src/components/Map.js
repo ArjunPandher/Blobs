@@ -6,7 +6,7 @@ import processJSON from '../jsonprocesser'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
-const Map = ({apiData}) => {
+const Map = ({apiData, popData}) => {
   const [viewport, setViewport] = useState({
     latitude: 40.8069488,
     longitude: -73.9618974,
@@ -19,6 +19,7 @@ const Map = ({apiData}) => {
 
   const geojson = processJSON(apiData);
 
+  console.log(popData)
   return (
     <ReactMapGL
       {...viewport}
