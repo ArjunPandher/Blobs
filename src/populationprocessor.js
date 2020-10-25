@@ -6,7 +6,7 @@ export default function processPopulation(popData){
 
     for (const city in popData){
         const population = popData[city][0]
-        const geometry = {'geometry': {'coordinates': [], 'type': 'Point'}}
+        const geometry = {'geometry': {'coordinates': [], 'type': 'Point'}, 'type': 'Feature'}
         geometry['geometry']['coordinates'] = popData[city][1]
         if (population <= 3000){
             low['features'].push(geometry)
@@ -22,7 +22,6 @@ export default function processPopulation(popData){
             ohno['features'].push(geometry)
         }
     }
-    console.log([low, medium, high, ohno])
     return [low, medium, high, ohno]
     // geojson = {'type': 'FeatureCollection', 'features': features}
 
