@@ -124,12 +124,13 @@ const MenuDrawer = ({apiData, aqiRating, setAqiRating, setViewport}) => {
   const [exampleCity, setExampleCity] = useState(null);
 
   const exampleCities = [
-    { label: "Atlanta", value: 1 },
-    { label: "Boulder", value: 2 },
-    { label: "Chicago", value: 3 },
-    { label: "Denver", value: 4 },
-    { label: "Queens", value: 5 },
-    { label: "Toronto", value: 6 },
+    { label: "Buffalo, NY", value: 1, coordinates: [42.92111, -78.76611]},
+    { label: "Chicago, IL", value: 2, coordinates: [37.76595, -122.39902]},
+    { label: "Denver, CO", value: 3, coordinates: [39.732146, -105.015317]},
+    { label: "Houston, TX", value: 4, coordinates: [29.7679707, -95.2205867]},
+    { label: "Portland, OR", value: 5, coordinates: [45.496641, -122.602877]},
+    { label: "San Francisco, CA", value: 6, coordinates: [37.76595, -122.39902]},
+    { label: "Tulsa, OK", value: 7, coordinates: [36.206699, -95.976402]},
   ];
 
   const handleDrawerOpen = () => {
@@ -138,6 +139,16 @@ const MenuDrawer = ({apiData, aqiRating, setAqiRating, setViewport}) => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleSetViewport = (event) => {
+    setViewport({
+      latitude: event.coordinates[0],
+      longitude: event.coordinates[1],
+      width: '100vw',
+      height: '100vh',
+      zoom: 15
+    });
   };
 
   return (
@@ -151,12 +162,12 @@ const MenuDrawer = ({apiData, aqiRating, setAqiRating, setViewport}) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap className={classes.title} >
-            Big blobs on map
+            Blobbing away...
           </Typography>
           <Select
             className={classes.search}
             options={exampleCities}
-            onChange={() => setViewport({latitude: 41.9136, longitude: -87.7239, width: '100vw', height: '100vh', zoom: 13})}>
+            onChange={handleSetViewport}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
