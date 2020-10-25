@@ -1,5 +1,3 @@
-import {Popup} from 'react-map-gl';
-
 function popUpHelper (selectedPlace) {
     let returnText = '';
     if (selectedPlace.place === 'bruh') {
