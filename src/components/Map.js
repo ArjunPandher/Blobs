@@ -40,7 +40,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
   //   setSelectedApiData({"type": "FeatureCollection", "features": ret});
   // };
 
-  const popjson = processPopulation(popData)
+  const popjson = processPopulation(popData);
 
   return (
     <ReactMapGL
@@ -620,7 +620,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
             <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
             <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
             <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-            {popData.selectedPlace.place ? ('hi') : null}
+            {/* {popData.selectedPlace.place ? ('hi') : null} */}
           </div>
         </Popup>
       ) : null}

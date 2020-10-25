@@ -25,7 +25,7 @@ const App = () => {
     width: '100vw',
     height: '100vh',
     // zoom: 15
-    zoom: 5
+    zoom: 15
   });
 
   const fixData = json => ({
