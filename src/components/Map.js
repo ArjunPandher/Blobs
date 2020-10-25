@@ -40,11 +40,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
   //   setSelectedApiData({"type": "FeatureCollection", "features": ret});
   // };
 
-<<<<<<< HEAD
-  const popjson = processPopulation(popData);
-=======
   const popjson = processPopulation(popData)
->>>>>>> 2299cb5cf6c7e875a275ff1e58efcb67fb3416f2
 
   return (
     <ReactMapGL
