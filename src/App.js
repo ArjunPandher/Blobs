@@ -12,11 +12,16 @@ const App = () => {
       'features': []
     }
   );
+  const [popData, setPopData] = useState({});
 
   const fixData = json => ({
     ...json,
     features: Object.values(json.features)
   });
+
+  const fixPop = json => ({
+    ...json
+  })
 
   useEffect(() => {
     const db = firebase.database().ref('-MKRxUv8sIFfQTf64Rnu');
@@ -27,9 +32,18 @@ const App = () => {
     return () => { db.off('value', handleData); };
   }, []);
 
+  useEffect(() => {
+    const db = firebase.database().ref('population/-MKT7yr163uDiPgQFD1O');
+    const handleData = snap => {
+      if (snap.val()) setPopData(fixPop(snap.val()));
+    }
+    db.on('value', handleData, error => alert(error));
+    return () => { db.off('value', handleData); };
+  }, []);
+
   return (
     <>
-      <MenuDrawer/>
+      <MenuDrawer apiData={apiData} />
       {/* <PopUpDialog/> */}
       <Map apiData={apiData} />
     </>
