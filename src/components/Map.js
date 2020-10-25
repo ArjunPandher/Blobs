@@ -620,22 +620,39 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
       >
         <div>
           <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
+          <div><img src="..\SanFranPic.jpg" alt="San Francisco" height='300px'></img></div>
           <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
           <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-          <p>Bruh</p>
+          <p>Population Density: 19,104.4/sq mi</p>
+          <div><img src="..\SanFranGraph.jpg" alt="Graph" height='300px'></img></div>
+        </div>
+      </Popup> : (
+        selectedPlace.place === 'Portland' ? <Popup
+        latitude={selectedPlace.geometry.coordinates[1]}
+        longitude={selectedPlace.geometry.coordinates[0]}
+        onClose={() => setSelectedPlace(null)}
+      >
+        <div>
+          <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
+          <div><img src="..\PortlandPic.jpg" alt="Portland" height='300px'></img></div>
+          <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
+          <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
+          <p>Population Density: 4,977.5/sq mi</p>
+          <div><img src="..\PortlandGraph.jpg" alt="Graph" height='300px'></img></div>
         </div>
       </Popup> : 
-      <Popup
-          latitude={selectedPlace.geometry.coordinates[1]}
-          longitude={selectedPlace.geometry.coordinates[0]}
-          onClose={() => setSelectedPlace(null)}
-        >
-          <div>
-          <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
-          <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
-          <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-        </div>
-        </Popup>
+        <Popup
+        latitude={selectedPlace.geometry.coordinates[1]}
+        longitude={selectedPlace.geometry.coordinates[0]}
+        onClose={() => setSelectedPlace(null)}
+      >
+        <div>
+        <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
+        <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
+        <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
+      </div>
+      </Popup>
+      )
       ) : null}
     </ReactMapGL>
   );
