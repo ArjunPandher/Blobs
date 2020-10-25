@@ -8,37 +8,8 @@ import processPopulation from '../populationprocessor'
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
 const Map = ({apiData, popData, viewport, setViewport}) => {
-  // const [viewport, setViewport] = useState({
-  //   latitude: 40.8069488,
-  //   longitude: -73.9618974,
-  //   width: '100vw',
-  //   height: '100vh',
-  //   // zoom: 15
-  //   zoom: 5
-  // });
-  // console.log(apiData)
   const [selectedPlace, setSelectedPlace] = useState(null);
   const geojson = processJSON(apiData);
-  const parser = new DOMParser();
-
-  // const updateApiData = () => {
-  //   const ret = [];
-  //   const features = apiData.features;
-  //   if (aqiRating.good) {
-  //     ret.push(features.filter(feature => Number(feature.properties.aqi) <= 50));
-  //   }
-  //   if (aqiRating.moderate) {
-  //     ret.push(features.filter(feature => Number(feature.properties.aqi) <= 100));
-  //   }
-  //   if (aqiRating.bad) {
-  //     ret.push(features.filter(feature => Number(feature.properties.aqi) <= 150));
-  //   }
-  //   if (aqiRating.unhealthy) {
-  //     ret.push(features.filter(feature => Number(feature.properties.aqi) > 150));
-  //   }
-  //   setSelectedApiData({"type": "FeatureCollection", "features": ret});
-  // };
-
   const popjson = processPopulation(popData);
 
   return (

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme, fade } from '@material-ui/core/styles';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -121,7 +121,6 @@ const useStyles = makeStyles((theme) => ({
 const MenuDrawer = ({apiData, aqiRating, setAqiRating, setViewport}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [exampleCity, setExampleCity] = useState(null);
 
   const exampleCities = [
     { label: "Buffalo, NY", value: 1, coordinates: [42.92111, -78.76611]},

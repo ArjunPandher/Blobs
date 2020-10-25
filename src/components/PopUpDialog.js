@@ -95,7 +95,7 @@ const PopUpDialog = () => {
       <Dialog onClose={handleCloseTwo} aria-labelledby="customized-dialog-title" open={openTwo}>
         <DialogTitle id="customized-dialog-title" onClose={handleCloseTwo}>
           <img src='../blobs.png' alt='' height='12%' width='12%' />
-          <b style={{paddingLeft: 100}}>Welcome to Blobs!</b>
+          <b style={{paddingLeft: 100}}>How to Use</b>
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
