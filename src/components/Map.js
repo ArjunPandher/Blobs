@@ -18,9 +18,8 @@ const Map = ({apiData, popData, aqiRating}) => {
   });
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedApiData, setSelectedApiData] = useState(apiData);
-  console.log(selectedApiData)
-
   const geojson = processJSON(selectedApiData);
+  
 
   const updateApiData = () => {
     const ret = [];
