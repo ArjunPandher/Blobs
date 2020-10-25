@@ -125,20 +125,9 @@ const MenuDrawer = ({apiData}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-<<<<<<< HEAD
-  const scaryAnimals = [
-    { label: "Atlanta", value: 1 },
-    { label: "Boulder", value: 2 },
-    { label: "Chicago", value: 3 },
-    { label: "Denver", value: 4 },
-    { label: "Queens", value: 5 },
-    { label: "Toronto", value: 6 },
-  ];
-=======
   const scaryAnimals = {
       // apiData.features.map(dataPoint => {label: 'place'})
   }
->>>>>>> ae3198dae73439cbc7b40a1eddda9d8c951ec6bb
 
   const handleDrawerOpen = () => {
     setOpen(true);

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ReactMapGL, {Layer, Source, Marker, Popup} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 import processJSON from '../jsonprocesser'
+import processPopulation from '../populationprocessor'
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
@@ -19,7 +20,8 @@ const Map = ({apiData, popData}) => {
 
   const geojson = processJSON(apiData);
 
-  console.log(popData)
+  const popjson = processPopulation(popData)
+  console.log(geojson)
   return (
     <ReactMapGL
       {...viewport}
@@ -300,6 +302,7 @@ const Map = ({apiData, popData}) => {
         }}
       />
     </Source>
+    
       {apiData.features.map(dataPoint =>
         (
           <Marker

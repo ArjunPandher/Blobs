@@ -44,13 +44,8 @@ const App = () => {
   return (
     <>
       <MenuDrawer apiData={apiData} />
-<<<<<<< HEAD
-      <PopUpDialog />
-      <Map apiData={apiData} />
-=======
       {/* <PopUpDialog/> */}
       <Map apiData={apiData} popData={popData}/>
->>>>>>> ae3198dae73439cbc7b40a1eddda9d8c951ec6bb
     </>
   );
 };
