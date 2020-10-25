@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ReactMapGL, {Layer, Source, Marker, Popup} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 import processJSON from '../jsonprocesser'
+import processPopulation from '../populationprocessor'
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
@@ -39,6 +40,11 @@ const Map = ({apiData, popData, aqiRating}) => {
     setSelectedApiData({"type": "FeatureCollection", "features": ret});
   };
 
+<<<<<<< HEAD
+=======
+  const popjson = processPopulation(popData)
+
+>>>>>>> bf817a54e7b8c6079eff606f682742375e393653
   return (
     <ReactMapGL
       {...viewport}
@@ -319,7 +325,284 @@ const Map = ({apiData, popData, aqiRating}) => {
         }}
       />
     </Source>
+<<<<<<< HEAD
       {selectedApiData.features.map(dataPoint =>
+=======
+    <Source id='contours4' type='geojson' data={popjson[0]}>
+      <Layer
+        id='contours4'
+        type='heatmap'
+        paint={{
+          'heatmap-weight': [
+            'interpolate',
+            ['linear'],
+            ['get', 'mag'],
+            0,
+            0,
+            6,
+            1
+            ],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
+            'heatmap-intensity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            1,
+            5,
+            3
+            ],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
+            'heatmap-color': [
+            'interpolate',
+            ['linear'],
+            ['heatmap-density'],
+            0,
+            'rgba(33,102,172,0)',
+            0.2,
+            'rgb(173,216,230)',
+            0.4,
+            'rgb(159,198,222)',
+            0.6,
+            'rgb(144,180,215)',
+            0.8,
+            'rgb(130,162,207)',
+            1,
+            'rgb(115,144,200)'
+            ],
+            // Adjust the heatmap radius by zoom level
+            'heatmap-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            20,
+            20,
+            75
+            ],
+            // Transition from heatmap to circle layer by zoom level
+            'heatmap-opacity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            7,
+            1,
+            9,
+            0.45
+            ]
+        }}
+      />
+    </Source>
+    <Source id='contours5' type='geojson' data={popjson[1]}>
+      <Layer
+        id='contours5'
+        type='heatmap'
+        paint={{
+          'heatmap-weight': [
+            'interpolate',
+            ['linear'],
+            ['get', 'mag'],
+            0,
+            0,
+            6,
+            1
+            ],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
+            'heatmap-intensity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            1,
+            5,
+            3
+            ],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
+            'heatmap-color': [
+            'interpolate',
+            ['linear'],
+            ['heatmap-density'],
+            0,
+            'rgba(33,102,172,0)',
+            0.2,
+            'rgb(173,216,230)',
+            0.4,
+            'rgb(144,180,215)',
+            0.6,
+            'rgb(115,144,200)',
+            0.8,
+            'rgb(87,108,184)',
+            1,
+            'rgb(58,72,169)'
+            ],
+            // Adjust the heatmap radius by zoom level
+            'heatmap-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            20,
+            20,
+            75
+            ],
+            // Transition from heatmap to circle layer by zoom level
+            'heatmap-opacity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            7,
+            1,
+            9,
+            0.45
+            ]
+        }}
+      />
+    </Source>
+    <Source id='contours6' type='geojson' data={popjson[2]}>
+      <Layer
+        id='contours6'
+        type='heatmap'
+        paint={{
+          'heatmap-weight': [
+            'interpolate',
+            ['linear'],
+            ['get', 'mag'],
+            0,
+            0,
+            6,
+            1
+            ],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
+            'heatmap-intensity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            1,
+            5,
+            3
+            ],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
+            'heatmap-color': [
+            'interpolate',
+            ['linear'],
+            ['heatmap-density'],
+            0,
+            'rgba(33,102,172,0)',
+            0.2,
+            'rgb(173,216,230)',
+            0.4,
+            'rgb(130,162,207)',
+            0.6,
+            'rgb(87,108,184)',
+            0.8,
+            'rgb(58,72,169)',
+            1,
+            'rgb(29,36,154)'
+            ],
+            // Adjust the heatmap radius by zoom level
+            'heatmap-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            20,
+            20,
+            75
+            ],
+            // Transition from heatmap to circle layer by zoom level
+            'heatmap-opacity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            7,
+            1,
+            9,
+            0.45
+            ]
+        }}
+      />
+    </Source>
+    <Source id='contours7' type='geojson' data={popjson[3]}>
+      <Layer
+        id='contours7'
+        type='heatmap'
+        paint={{
+          'heatmap-weight': [
+            'interpolate',
+            ['linear'],
+            ['get', 'mag'],
+            0,
+            0,
+            6,
+            1
+            ],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
+            'heatmap-intensity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            1,
+            5,
+            3
+            ],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
+            'heatmap-color': [
+            'interpolate',
+            ['linear'],
+            ['heatmap-density'],
+            0,
+            'rgba(33,102,172,0)',
+            0.2,
+            'rgb(173,216,230)',
+            0.4,
+            'rgb(130,162,207)',
+            0.6,
+            'rgb(87,108,184)',
+            0.8,
+            'rgb(43,54,162)',
+            1,
+            'rgb(0,0,139)'
+            ],
+            // Adjust the heatmap radius by zoom level
+            'heatmap-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            0,
+            20,
+            20,
+            75
+            ],
+            // Transition from heatmap to circle layer by zoom level
+            'heatmap-opacity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            7,
+            1,
+            9,
+            0.45
+            ]
+        }}
+      />
+    </Source>
+    
+      {apiData.features.map(dataPoint =>
+>>>>>>> bf817a54e7b8c6079eff606f682742375e393653
         (
           <Marker
             key={dataPoint.uid}
