@@ -6,7 +6,7 @@ export default function processJSON(geojson){
     const medium = {'type': 'FeatureCollection', 'features': []}
     const high = {'type': 'FeatureCollection', 'features': []} 
     const ohno = {'type': 'FeatureCollection', 'features': []}
-    console.log(low['features'])
+
     for (let i = 0; i < features.length ; i++){
         const aqi = features[i]['properties']['aqi']
         if (aqi <= 50){

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import IntroModal from './components/IntroModal';
 import Map from './components/Map';
+import MenuDrawer from './components/MenuDrawer';
 import {firebase} from './utils/firebase.js';
 
 
@@ -29,6 +30,7 @@ const App = () => {
 
   return (
     <>
+      <MenuDrawer/>
       <IntroModal />
       <Map apiData={apiData} />
     </>
