@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 
 import IntroModal from './components/IntroModal';
 import Map from './components/Map';
+import MenuDrawer from './components/MenuDrawer';
 import {firebase} from './utils/firebase.js';
-
+import PopUpDialog from './components/PopUpDialog'
 
 const App = () => {
   const [apiData, setApiData] = useState(
@@ -29,7 +30,9 @@ const App = () => {
 
   return (
     <>
-      <IntroModal />
+      <MenuDrawer/>
+      <PopUpDialog/>
+      {/* <IntroModal/> */}
       <Map apiData={apiData} />
     </>
   );
