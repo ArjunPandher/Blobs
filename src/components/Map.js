@@ -7,7 +7,7 @@ import processPopulation from '../populationprocessor'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
-const Map = ({apiData, popData}) => {
+const Map = ({apiData, popData, aqiRating}) => {
   const [viewport, setViewport] = useState({
     latitude: 40.8069488,
     longitude: -73.9618974,
@@ -17,11 +17,34 @@ const Map = ({apiData, popData}) => {
     zoom: 5
   });
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [selectedApiData, setSelectedApiData] = useState(apiData);
+  console.log(selectedApiData)
 
-  const geojson = processJSON(apiData);
+  const geojson = processJSON(selectedApiData);
 
+  const updateApiData = () => {
+    const ret = [];
+    const features = apiData.features;
+    if (aqiRating.good) {
+      ret.push(features.filter(feature => Number(feature.properties.aqi) <= 50));
+    }
+    if (aqiRating.moderate) {
+      ret.push(features.filter(feature => Number(feature.properties.aqi) <= 100));
+    }
+    if (aqiRating.bad) {
+      ret.push(features.filter(feature => Number(feature.properties.aqi) <= 150));
+    }
+    if (aqiRating.unhealthy) {
+      ret.push(features.filter(feature => Number(feature.properties.aqi) > 150));
+    }
+    setSelectedApiData({"type": "FeatureCollection", "features": ret});
+  };
+
+<<<<<<< HEAD
+=======
   const popjson = processPopulation(popData)
 
+>>>>>>> bf817a54e7b8c6079eff606f682742375e393653
   return (
     <ReactMapGL
       {...viewport}
@@ -302,6 +325,9 @@ const Map = ({apiData, popData}) => {
         }}
       />
     </Source>
+<<<<<<< HEAD
+      {selectedApiData.features.map(dataPoint =>
+=======
     <Source id='contours4' type='geojson' data={popjson[0]}>
       <Layer
         id='contours4'
@@ -576,6 +602,7 @@ const Map = ({apiData, popData}) => {
     </Source>
     
       {apiData.features.map(dataPoint =>
+>>>>>>> bf817a54e7b8c6079eff606f682742375e393653
         (
           <Marker
             key={dataPoint.uid}
@@ -601,7 +628,8 @@ const Map = ({apiData, popData}) => {
             <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
             <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
             <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-            {popData.selectedPlace.place ? ('hi') : null}
+            <p>Air Quality Index: {selectedPlace.properties.aqi}</p>
+            {/* <p>Population: {popData.{selectedPlace.place}}</p> */}
           </div>
         </Popup>
       ) : null}

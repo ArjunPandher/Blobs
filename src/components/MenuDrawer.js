@@ -121,13 +121,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MenuDrawer = ({apiData}) => {
+const MenuDrawer = ({apiData, aqiRating, setAqiRating}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
+<<<<<<< HEAD
+  const scaryAnimals = [
+    { label: "Atlanta", value: 1 },
+    { label: "Boulder", value: 2 },
+    { label: "Chicago", value: 3 },
+    { label: "Denver", value: 4 },
+    { label: "Queens", value: 5 },
+    { label: "Toronto", value: 6 },
+  ];
+=======
   const scaryAnimals = {
       // apiData.features.map(dataPoint => {label: 'place'})
   }
+>>>>>>> bf817a54e7b8c6079eff606f682742375e393653
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -186,7 +197,7 @@ const MenuDrawer = ({apiData}) => {
           paper: classes.drawerPaper,
         }}
       >
-      <CheckBoxGroup/>
+      <CheckBoxGroup aqiRating={aqiRating} setAqiRating={setAqiRating} />
       </Drawer>
       </div>
   )
