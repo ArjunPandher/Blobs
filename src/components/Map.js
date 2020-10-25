@@ -594,7 +594,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
         }}
       />
     </Source>   
-      {apiData.features.map(dataPoint =>
+      {/* {apiData.features.map(dataPoint =>
         (
           <Marker
             key={dataPoint.uid}
@@ -609,7 +609,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
               onClick={() => setSelectedPlace(dataPoint)} />
           </Marker>
         )
-      )}
+      )} */}
       {selectedPlace ? (
         <Popup
           latitude={selectedPlace.geometry.coordinates[1]}

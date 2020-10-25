@@ -51,41 +51,82 @@ const DialogActions = withStyles((theme) => ({
 
 const PopUpDialog = () => {
   const [open, setOpen] = useState(true);
+  const [openTwo, setOpenTwo] = useState(false);
   
   const handleClose = () => {
     setOpen(false);
+    setOpenTwo(true);
   };
+
+  const handleCloseTwo = () => {
+    setOpenTwo(false);
+  }
 
   return (
     <div>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          <img  src='../townLogo.png' alt='' height = '12%' width = '12%' className="App-logo" alt="logo" />
-          Welcome to Blobs!
+          <img src='../blobs.png' alt='' height='12%' width='12%' />
+          <b style={{paddingLeft: 100}}>Welcome to Blobs!</b>
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Blobs is a web-app to help analyze and combat the
+            - Blobs is a web-app to help analyze and combat the
           </Typography>
           <Typography gutterBottom>
            negative impacts of urban living on the environment.
           </Typography>
           <Typography gutterBottom>
-            -  Drag around to see air quality and population of an area! 
+            - Through the power of tech, we seek to analyze how
           </Typography>
           <Typography gutterBottom>
-            -  Zoom in and out to get a detailed view of an area.
+            different factors of places (air pollution, GDP,
           </Typography>
           <Typography gutterBottom>
-            -  Use the search bar to hone in on some popular cities.
-          </Typography>
-          <Typography gutterBottom>
-            - Click the menu on the top right to select filters!
+            population, etc.) relate to another and affect each other.
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Enter
+          <Button onClick={handleClose} color="secondary" variant='contained'>
+            Next
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog onClose={handleCloseTwo} aria-labelledby="customized-dialog-title" open={openTwo}>
+        <DialogTitle id="customized-dialog-title" onClose={handleCloseTwo}>
+          <img src='../blobs.png' alt='' height='12%' width='12%' />
+          <b style={{paddingLeft: 100}}>Welcome to Blobs!</b>
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+            <img src='../drag.png' alt='' height='5%' width='5%' />
+            <> </>
+            Drag around to see explore the world!
+          </Typography>
+          <Typography gutterBottom>
+            <img src='../zoom.png' alt='' height='4%' width='4%' />
+            <> </>
+            Scroll up and down to zoom in and out!
+          </Typography>
+          <Typography gutterBottom>
+            <img src='../marker.png' alt='' height='4%' width='4%' />
+            <> </>
+            Click on map pins to get information about a place!
+          </Typography>
+          <Typography gutterBottom>
+            <img src='../search.png' alt='' height='4%' width='4%' />
+            <> </>
+            Use the search bar to hone in on some popular cities!
+          </Typography>
+          <Typography gutterBottom>
+            <img src='../menu.png' alt='' height='4%' width='4%' />
+            <> </>
+            Click the menu on the top right to select filters!
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseTwo} color="secondary" variant='contained'>
+            Begin
           </Button>
         </DialogActions>
       </Dialog>

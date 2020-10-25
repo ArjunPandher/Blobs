@@ -162,7 +162,7 @@ const MenuDrawer = ({apiData, aqiRating, setAqiRating, setViewport}) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap className={classes.title} >
-            Big blobs on map
+            Blobbing away...
           </Typography>
           <Select
             className={classes.search}
