@@ -3,7 +3,7 @@ import ReactMapGL, {Layer, Source, Marker, Popup} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 import processJSON from '../jsonprocesser'
 import processPopulation from '../populationprocessor'
-
+import { popUpHelper } from './Helper.js'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
@@ -20,7 +20,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedApiData, setSelectedApiData] = useState(apiData);
   const geojson = processJSON(apiData);
-  
+  const parser = new DOMParser();
 
   // const updateApiData = () => {
   //   const ret = [];
@@ -609,23 +609,44 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
               onClick={() => setSelectedPlace(dataPoint)} />
           </Marker>
         )
+<<<<<<< HEAD
+      )}
+
+      {
+      selectedPlace ? (
+        selectedPlace.place === 'San Francisco-Arkansas Street' ? <Popup
+        latitude={selectedPlace.geometry.coordinates[1]}
+        longitude={selectedPlace.geometry.coordinates[0]}
+        onClose={() => setSelectedPlace(null)}
+      >
+        <div>
+          <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
+          <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
+          <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
+          <p>Bruh</p>
+        </div>
+      </Popup> : 
+      <Popup
+=======
       )} */}
       {selectedPlace ? (
         <Popup
+>>>>>>> 530cd351ab5a2d3b8977f20fd7ea08b6efd051f9
           latitude={selectedPlace.geometry.coordinates[1]}
           longitude={selectedPlace.geometry.coordinates[0]}
           onClose={() => setSelectedPlace(null)}
         >
           <div>
-            <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
-            <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
-            <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-            {/* {popData.selectedPlace.place ? ('hi') : null} */}
-          </div>
+          <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
+          <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
+          <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
+        </div>
         </Popup>
       ) : null}
     </ReactMapGL>
   );
 };
+
+
 
 export default Map;
