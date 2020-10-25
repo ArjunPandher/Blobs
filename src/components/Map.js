@@ -19,9 +19,8 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
   // console.log(apiData)
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedApiData, setSelectedApiData] = useState(apiData);
-  console.log(selectedApiData)
-
   const geojson = processJSON(selectedApiData);
+  
 
   const updateApiData = () => {
     const ret = [];
@@ -41,7 +40,11 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
     setSelectedApiData({"type": "FeatureCollection", "features": ret});
   };
 
+<<<<<<< HEAD
   const popjson = processPopulation(popData);
+=======
+  const popjson = processPopulation(popData)
+>>>>>>> 2299cb5cf6c7e875a275ff1e58efcb67fb3416f2
 
   return (
     <ReactMapGL
@@ -358,15 +361,15 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(173,216,230)',
+            'rgb(255,180,0)',
             0.4,
-            'rgb(159,198,222)',
+            'rgb(255,206,0)',
             0.6,
-            'rgb(144,180,215)',
+            'rgb(255,219,0)',
             0.8,
-            'rgb(130,162,207)',
+            'rgb(255,219,0)',
             1,
-            'rgb(115,144,200)'
+            'rgb(255,255,0)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -570,7 +573,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
             0.8,
             'rgb(43,54,162)',
             1,
-            'rgb(0,0,139)'
+            'rgb(,0,139)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -622,8 +625,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
             <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
             <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
             <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-            <p>Air Quality Index: {selectedPlace.properties.aqi}</p>
-            {/* <p>Population: {popData.{selectedPlace.place}}</p> */}
+            {popData.selectedPlace.place ? ('hi') : null}
           </div>
         </Popup>
       ) : null}

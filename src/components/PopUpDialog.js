@@ -64,14 +64,14 @@ const PopUpDialog = () => {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Blobs is a web application that lets you see and compare the distribution and densities of air pollution quality, city populations, and regional GDP.
-            Let's walk through how to use this web application! 
+            Blobs is a web application that lets you see and compare the distribution and densities of air pollution quality and city population.
+            Let's walk through how to use it! 
           </Typography>
           <Typography gutterBottom>
-            Use the keys and markers on the popup drawer from the bottom to adjust the settings displayed. 
+            The current screen shows a map of all the air quality indices and populations stretched across the country. 
           </Typography>
           <Typography gutterBottom>
-            Let's go!
+            Use the buttons on the right popup menu to filter out preferences and view different distributions of the different values.
           </Typography>
         </DialogContent>
         <DialogActions>
