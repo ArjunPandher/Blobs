@@ -191,7 +191,7 @@ const MenuDrawer = () => {
           paper: classes.drawerPaper,
         }}
       >
-        <CheckBoxGroup/>
+      <CheckBoxGroup/>
       </Drawer>
       </div>
   )
