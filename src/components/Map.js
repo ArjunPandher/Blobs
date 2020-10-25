@@ -337,15 +337,15 @@ const Map = ({apiData, popData}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(173,216,230)',
+            'rgb(255,255,237)',
             0.4,
-            'rgb(159,198,222)',
+            'rgb(255,255,197)',
             0.6,
-            'rgb(144,180,215)',
+            'rgb(255,255,158)',
             0.8,
-            'rgb(130,162,207)',
+            'rgb(255,255,139)',
             1,
-            'rgb(115,144,200)'
+            'rgb(255,255,119)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -405,15 +405,15 @@ const Map = ({apiData, popData}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(173,216,230)',
+            'rgb(255,255,237)',
             0.4,
-            'rgb(144,180,215)',
+            'rgb(255,255,197)',
             0.6,
-            'rgb(115,144,200)',
+            'rgb(255,255,119)',
             0.8,
-            'rgb(87,108,184)',
+            'rgb(255,255,79)',
             1,
-            'rgb(58,72,169)'
+            'rgb(255,255,0)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -473,15 +473,15 @@ const Map = ({apiData, popData}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(173,216,230)',
+            'rgb(255,255,237)',
             0.4,
-            'rgb(130,162,207)',
+            'rgb(255,255,119)',
             0.6,
-            'rgb(87,108,184)',
+            'rgb(255,255,0)',
             0.8,
-            'rgb(58,72,169)',
+            'rgb(255,202,0)',
             1,
-            'rgb(29,36,154)'
+            'rgb(255,187,0)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
@@ -541,15 +541,15 @@ const Map = ({apiData, popData}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(173,216,230)',
+            'rgb(255,255,237)',
             0.4,
-            'rgb(130,162,207)',
+            'rgb(255,255,0)',
             0.6,
-            'rgb(87,108,184)',
+            'rgb(255,187,0)',
             0.8,
-            'rgb(43,54,162)',
+            'rgb(255,150,0)',
             1,
-            'rgb(0,0,139)'
+            'rgb(255,110,0)'
             ],
             // Adjust the heatmap radius by zoom level
             'heatmap-radius': [
