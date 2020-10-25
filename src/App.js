@@ -44,7 +44,7 @@ const App = () => {
   return (
     <>
       <MenuDrawer apiData={apiData} />
-      {/* <PopUpDialog/> */}
+      <PopUpDialog/>
       <Map apiData={apiData} popData={popData}/>
     </>
   );

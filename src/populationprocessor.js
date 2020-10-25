@@ -7,7 +7,7 @@ export default function processPopulation(popData){
     for (const city in popData){
         const population = popData[city][0]
         const geometry = {'geometry': {'coordinates': [], 'type': 'Point'}, 'type': 'Feature'}
-        geometry['geometry']['coordinates'] = popData[city][1]
+        geometry['geometry']['coordinates'] = [popData[city][1][1], popData[city][1][0]]
         if (population <= 3000){
             low['features'].push(geometry)
         }
