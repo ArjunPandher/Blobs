@@ -27,7 +27,7 @@ const Map = ({apiData}) => {
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >
     <Source id='contours0' type='geojson' data={geojson[0]}>
-    <Layer
+      <Layer
         id='contours0'
         type='heatmap'
         paint={{
@@ -95,7 +95,7 @@ const Map = ({apiData}) => {
       />
     </Source>
     <Source id='contours1' type='geojson' data={geojson[1]}>
-    <Layer
+      <Layer
         id='contours1'
         type='heatmap'
         paint={{
@@ -129,7 +129,7 @@ const Map = ({apiData}) => {
             0,
             'rgba(33,102,172,0)',
             0.2,
-            'rgb(0, 0, 255)',
+            'rgb(0,0,255)',
             0.4,
             'rgb(6, 177, 225)',
             0.6,
@@ -152,7 +152,7 @@ const Map = ({apiData}) => {
             // Transition from heatmap to circle layer by zoom level
             'heatmap-opacity': [
             'interpolate',
-            ['constant'],
+            ['linear'],
             ['zoom'],
             7,
             1,
@@ -163,7 +163,7 @@ const Map = ({apiData}) => {
       />
     </Source>
     <Source id='contours2' type='geojson' data={geojson[2]}>
-    <Layer
+      <Layer
         id='contours2'
         type='heatmap'
         paint={{
@@ -199,7 +199,7 @@ const Map = ({apiData}) => {
             0.2,
             'rgb(0,0,255)',
             0.4,
-            'rgb(6, 177, 225))',
+            'rgb(6, 177, 225)',
             0.6,
             'rgb(53, 255, 14)',
             0.8,
@@ -231,7 +231,7 @@ const Map = ({apiData}) => {
       />
     </Source>
     <Source id='contours3' type='geojson' data={geojson[3]}>
-    <Layer
+      <Layer
         id='contours3'
         type='heatmap'
         paint={{
@@ -267,11 +267,11 @@ const Map = ({apiData}) => {
             0.2,
             'rgb(0,0,255)',
             0.4,
-            'rgb(6, 177, 225))',
-            0.6,
             'rgb(53, 255, 14)',
-            0.8,
+            0.6,
             'rgb(235, 255,12)',
+            0.8,
+            'rgb(255,151,12)',
             1,
             'rgb(255,0,0)'
             ],
