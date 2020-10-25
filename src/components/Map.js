@@ -40,11 +40,8 @@ const Map = ({apiData, popData, aqiRating}) => {
     setSelectedApiData({"type": "FeatureCollection", "features": ret});
   };
 
-<<<<<<< HEAD
-=======
   const popjson = processPopulation(popData)
 
->>>>>>> bf817a54e7b8c6079eff606f682742375e393653
   return (
     <ReactMapGL
       {...viewport}
@@ -325,9 +322,6 @@ const Map = ({apiData, popData, aqiRating}) => {
         }}
       />
     </Source>
-<<<<<<< HEAD
-      {selectedApiData.features.map(dataPoint =>
-=======
     <Source id='contours4' type='geojson' data={popjson[0]}>
       <Layer
         id='contours4'
@@ -602,7 +596,6 @@ const Map = ({apiData, popData, aqiRating}) => {
     </Source>
     
       {apiData.features.map(dataPoint =>
->>>>>>> bf817a54e7b8c6079eff606f682742375e393653
         (
           <Marker
             key={dataPoint.uid}
