@@ -125,7 +125,7 @@ const MenuDrawer = ({apiData, aqiRating, setAqiRating, setViewport}) => {
 
   const exampleCities = [
     { label: "Buffalo, NY", value: 1, coordinates: [42.92111, -78.76611]},
-    { label: "Chicago, IL", value: 2, coordinates: [37.76595, -122.39902]},
+    { label: "Chicago, IL", value: 2, coordinates: [41.9136, -87.7239]},
     { label: "Denver, CO", value: 3, coordinates: [39.732146, -105.015317]},
     { label: "Houston, TX", value: 4, coordinates: [29.7679707, -95.2205867]},
     { label: "Portland, OR", value: 5, coordinates: [45.496641, -122.602877]},

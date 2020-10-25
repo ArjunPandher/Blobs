@@ -3,11 +3,11 @@ import ReactMapGL, {Layer, Source, Marker, Popup} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 import processJSON from '../jsonprocesser'
 import processPopulation from '../populationprocessor'
-import { popUpHelper } from './Helper.js'
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
-const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
+const Map = ({apiData, popData, viewport, setViewport}) => {
   // const [viewport, setViewport] = useState({
   //   latitude: 40.8069488,
   //   longitude: -73.9618974,
@@ -18,7 +18,6 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
   // });
   // console.log(apiData)
   const [selectedPlace, setSelectedPlace] = useState(null);
-  const [selectedApiData, setSelectedApiData] = useState(apiData);
   const geojson = processJSON(apiData);
   const parser = new DOMParser();
 

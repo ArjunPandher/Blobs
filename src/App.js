@@ -14,11 +14,15 @@ const App = () => {
   );
   const [popData, setPopData] = useState({});
   const [aqiRating, setAqiRating] = useState({
-    unhealthy: true,
-    bad: true,
-    moderate: true,
-    good: true,
+    "aqi": true,
+    "population": true,
+    "unhealthy": true,
+    "bad": true,
+    "moderate": true,
+    "good": true,
+    "veryGood": true
   });
+
   const [viewport, setViewport] = useState({
     latitude: 40.8069488,
     longitude: -73.9618974,
