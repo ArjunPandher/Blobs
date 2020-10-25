@@ -7,15 +7,16 @@ import processPopulation from '../populationprocessor'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlvaDAzMTYiLCJhIjoiY2tnbjF5enpiMDV3azJ5cWxzcWd5djJ6NCJ9.fN9v1ZMyAVCSIWeITwhg7w';
 
-const Map = ({apiData, popData, aqiRating}) => {
-  const [viewport, setViewport] = useState({
-    latitude: 40.8069488,
-    longitude: -73.9618974,
-    width: '100vw',
-    height: '100vh',
-    // zoom: 15
-    zoom: 5
-  });
+const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
+  // const [viewport, setViewport] = useState({
+  //   latitude: 40.8069488,
+  //   longitude: -73.9618974,
+  //   width: '100vw',
+  //   height: '100vh',
+  //   // zoom: 15
+  //   zoom: 5
+  // });
+  // console.log(apiData)
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedApiData, setSelectedApiData] = useState(apiData);
   console.log(selectedApiData)
@@ -40,11 +41,8 @@ const Map = ({apiData, popData, aqiRating}) => {
     setSelectedApiData({"type": "FeatureCollection", "features": ret});
   };
 
-<<<<<<< HEAD
-=======
-  const popjson = processPopulation(popData)
+  const popjson = processPopulation(popData);
 
->>>>>>> bf817a54e7b8c6079eff606f682742375e393653
   return (
     <ReactMapGL
       {...viewport}
@@ -325,9 +323,6 @@ const Map = ({apiData, popData, aqiRating}) => {
         }}
       />
     </Source>
-<<<<<<< HEAD
-      {selectedApiData.features.map(dataPoint =>
-=======
     <Source id='contours4' type='geojson' data={popjson[0]}>
       <Layer
         id='contours4'
@@ -602,7 +597,6 @@ const Map = ({apiData, popData, aqiRating}) => {
     </Source>
     
       {apiData.features.map(dataPoint =>
->>>>>>> bf817a54e7b8c6079eff606f682742375e393653
         (
           <Marker
             key={dataPoint.uid}
