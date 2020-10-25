@@ -126,7 +126,7 @@ const MenuDrawer = ({apiData}) => {
   const [open, setOpen] = useState(false);
 
   const scaryAnimals = {
-      apiData.features.map(dataPoint => {label: 'place'})
+      // apiData.features.map(dataPoint => {label: 'place'})
   }
 
   const handleDrawerOpen = () => {
