@@ -24,7 +24,7 @@ const App = () => {
   })
 
   useEffect(() => {
-    const db = firebase.database().ref('-MKRxUv8sIFfQTf64Rnu');
+    const db = firebase.database().ref('-MKTO7PK-CGXKVZ5cMG0');
     const handleData = snap => {
       if (snap.val()) setApiData(fixData(snap.val()));
     }
