@@ -19,7 +19,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
   // console.log(apiData)
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedApiData, setSelectedApiData] = useState(apiData);
-  const geojson = processJSON(selectedApiData);
+  const geojson = processJSON(apiData);
   
 
   const updateApiData = () => {
@@ -40,11 +40,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
     setSelectedApiData({"type": "FeatureCollection", "features": ret});
   };
 
-<<<<<<< HEAD
   const popjson = processPopulation(popData);
-=======
-  const popjson = processPopulation(popData)
->>>>>>> 2299cb5cf6c7e875a275ff1e58efcb67fb3416f2
 
   return (
     <ReactMapGL
@@ -625,7 +621,7 @@ const Map = ({apiData, popData, aqiRating, viewport, setViewport}) => {
             <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
             <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
             <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
-            {popData.selectedPlace.place ? ('hi') : null}
+            {/* {popData.selectedPlace.place ? ('hi') : null} */}
           </div>
         </Popup>
       ) : null}
