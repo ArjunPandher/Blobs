@@ -322,7 +322,10 @@ const Map = ({apiData, popData}) => {
           onClose={() => setSelectedPlace(null)}
         >
           <div>
-            park
+            <h2>{selectedPlace.place}{", "}{selectedPlace.state}</h2>
+            <p>Latitude: {selectedPlace.geometry.coordinates[1]}</p>
+            <p>Longitude: {selectedPlace.geometry.coordinates[0]}</p>
+            {popData.selectedPlace.place ? ('hi') : null}
           </div>
         </Popup>
       ) : null}
