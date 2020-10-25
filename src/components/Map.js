@@ -19,6 +19,7 @@ const Map = ({apiData, popData}) => {
 
   const geojson = processJSON(apiData);
 
+  console.log(popData)
   return (
     <ReactMapGL
       {...viewport}

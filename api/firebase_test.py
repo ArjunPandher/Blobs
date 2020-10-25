@@ -8,7 +8,13 @@ firebase = firebase.FirebaseApplication("https://divhacks2020.firebaseio.com/", 
 
 def getMapData():
   features = []
-  states = ['colorado', 'new+york', 'maine']
+  states = ['Alabama','Alaska','American+Samoa','Arizona','Arkansas','California',
+            'Colorado','Connecticut','Delaware','District+of+Columbia','Federated+States+of+Micronesia',
+            'Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky',
+            'Louisiana','Maine','Marshall+Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri',
+            'Montana','Nebraska','Nevada','New+Hampshire','New+Jersey','New+Mexico','New+York','North+Carolina','North+Dakota',
+            'Northern+Mariana+Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto+Rico','Rhode+Island','South+Carolina',
+            'South+Dakota','Tennessee','Texas','Utah','Vermont','Virgin+Island','Virginia','Washington','West+Virginia','Wisconsin','Wyoming']
 
   for state in states:
       response = req.get('https://api.waqi.info/search/?token=491989f2467ee8ad41a1ed72d33635bf9669f1e6&keyword=' + state)
@@ -52,4 +58,4 @@ def getPopData():
 
 
 getMapData()
-getPopData()
+# getPopData()
