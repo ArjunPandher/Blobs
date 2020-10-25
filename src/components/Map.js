@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ReactMapGL, {Layer, Source, Marker} from 'react-map-gl';
+import ReactMapGL, {Layer, Source, Marker, Popup} from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 import processJSON from '../jsonprocesser'
 
@@ -15,6 +15,7 @@ const Map = ({apiData}) => {
     // zoom: 15
     zoom: 5
   });
+  const [selectedPlace, setSelectedPlace] = useState(null);
 
   const geojson = processJSON(apiData);
 
@@ -305,10 +306,26 @@ const Map = ({apiData}) => {
             latitude={dataPoint.geometry.coordinates[1]}
             longitude={dataPoint.geometry.coordinates[0]}
           >
-            <img src='../marker.png' alt='' height='3%' width='3%' />
+            <img
+              src='../marker.png'
+              alt=''
+              height='3%'
+              width='3%'
+              onClick={() => setSelectedPlace(dataPoint)} />
           </Marker>
         )
       )}
+      {selectedPlace ? (
+        <Popup
+          latitude={selectedPlace.geometry.coordinates[1]}
+          longitude={selectedPlace.geometry.coordinates[0]}
+          onClose={() => setSelectedPlace(null)}
+        >
+          <div>
+            park
+          </div>
+        </Popup>
+      ) : null}
     </ReactMapGL>
   );
 };
